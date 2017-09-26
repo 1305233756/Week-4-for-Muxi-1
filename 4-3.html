@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Task 3</title>
+</head>
+<body>
+<h3>请按照范例格式输入内容</h3>
+例如输入<pre>"name=jerry&age=1"</pre>或者<pre>"name= tom &age=12&gender&"</pre>
+<input type="text" id="input">
+<br>
+<br><button id="button">输出</button>
+<div id="output"></div>
+
+<script type="text/javascript">
+
+var button = document.getElementById('button')
+var output =document.getElementById('output')
+button.addEventListener('click',function(){
+	var input = document.getElementById('input').value
+	var Query 
+	if(Query = parseQuery(input)) {	
+		var para=document.createElement("p")
+		para.innerHTML = Query	
+		output.appendChild(para)	
+	}	
+})
+function parseQuery(query) {
+	var Query = []
+	// var t = ""	//最后输出的字符串数组的每一个元素的暂存变量
+	// var j = 0	//字符串数组的长度
+	// var k = 0	//判断格式正误的变量，遇到“=”k++,遇到非最后的“&”k--。k==1格式正确
+	
+	for(var i=query.length-1;query[i]=='&'||query[i]==' ';i--){
+		query = query.substr(0, query.length-1)		
+	}	//将原字符串化为‘标准’的样式（尾部无‘&’）
+
+	Query = query.split("&")	//用&把字符串切分成字符串数组
+
+	for(var i=0;i<Query.length;i++){
+		if(Query[i].indexOf('=')!=-1)
+			Query[i] = Query[i].replace(/=/,":\"")+"\""
+		else
+			Query[i] = Query[i]+":\"\""
+	}//for循环对字符串数组的每个元素进行操作
+
+	return Query
+
+	// for(var i=0;i<query.length;i++){
+	// 	if(query[i]=='='){
+	// 		t = t+":\""
+	// 		k++
+	// 		continue
+	// 	}	//遇到‘=’
+	// 	else if (query[i]=='&') {
+	// 		t = t +"\""
+	// 		Query[j] = t
+	// 		j++
+	// 		t = ""
+	// 		k --
+	// 		continue
+			
+	// 	}	
+	// 	else if (query[i]=='&'&&i==query.length-1) {
+	// 		if(k==0){
+	// 			t=t+":\"\""
+	// 			k++
+	// 			continue
+	// 		}//最后一个是‘&’且没有‘=’出现
+	// 		t = t+"\""
+	// 		continue
+	// 	}	//遇到最后一个字符是‘&’
+
+	// 	else if (query[i]!='&'&&i==query.length-1) {
+	// 		t = t+query[i]+"\""
+	// 		continue
+	// 	}	//遇到最后一个字符不是‘&’
+ 	// else t=t+query[i]	//其它字符
+	// }	
+	//Query[j] = t 	如果最后一个字符不是‘&’，还要加上最后的一个字符串元素
+	// return Query
+	// else return false
+}
+</script>
+</body>
+</html>

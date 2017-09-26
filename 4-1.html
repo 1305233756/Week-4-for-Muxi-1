@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Task 1</title>
+</head>
+<body>
+了解数组中的方法。现有如下数组
+
+<pre>var num = [2,3,4,5,6,7]<pre>
+
+<p><button id="one">删除该数组末尾最后一个元素，在数组开头添加一个元素,数字1</button>
+<p><button id="two">给数组中的每个元素作平方运算,返回一个新的数组squareNum</button>
+<p><button id="three">筛选出squareNum中的奇数，返回新的数组oddNum</button>
+<p><button id="four">累乘oddNum数组中的值并输出</button>
+
+<script type="text/javascript">
+	var	num = [2,3,4,5,6,7]
+	var one = document.getElementById("one")
+	var two = document.getElementById("two")
+	var squareNum = []
+	var oddNum = []
+	
+
+	one.addEventListener("click",function(){
+		num.splice(5,1); //删除最后一个数组元素（下标为5，长度为1）
+		num.splice(0,0,1);//为数组添加第一个元素1
+		alert("删除和添加后是"+num)
+})
+	two.addEventListener("click",function(){
+		for(var i=0;i<num.length;i++) {
+			var a=num[i]**2;
+			squareNum.splice(i,0,a)
+		}
+		alert("squareNum是"+squareNum)
+})
+	three.addEventListener("click",function(){
+		var j=0
+		for(var i=0;i<squareNum.length;i++) {
+			if(squareNum[i]%2==1){
+				var a=squareNum[i]
+				oddNum.splice(j,0,a)
+				j++
+			}
+		}
+		alert("oddNum"+oddNum)
+})
+
+	four.addEventListener("click",function(){
+		var a=1
+		for(var i=0;i<oddNum.length;i++) {
+			a=a*oddNum[i]
+		}
+		alert("累乘="+a)
+})
+</script>
+</body>
+</html>

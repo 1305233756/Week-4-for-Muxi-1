@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Task 2</title>
+</head>
+<body>
+<p>姓名 <input type="text" id="name">
+<p>年龄 <input type="text" id="age">
+<p> <button id="button">介绍自己</button>
+
+
+
+<script type="text/javascript">
+
+var box = document.getElementById("button")
+
+button.addEventListener("click",function(){
+
+	var name = document.getElementById("name").value	//姓名框内的值赋给name变量
+	var age = document.getElementById("age").value
+	
+	alert(Person(name,age))
+})
+
+
+function Person(name, age){
+	var arr = ""
+	arr = "I am "+name+", I am "+age+" years old!"	//字符串的连接
+	return arr
+}
+</script>
+</body>
+</html>
